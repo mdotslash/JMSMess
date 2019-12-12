@@ -122,18 +122,20 @@ function render(context, instruction) {
         let translation = AffineTransform.makeTranslation(-(1.2 - 1.0) * (960/2), -(1.2 - 1.0) * (1280/2))
         let transform = AffineTransform.concat(scale, translation)
         
-        instruction.setAffineTransform(transform, "video ")
+        instruction.setAffineTransform(transform, "video")
     }
 
-       if (instruction.index == 3) {
-        // Use AffineTransform to apply a zoom + translation to the second clip
+    //    if (instruction.index == 3) {
+    //     // Use AffineTransform to apply a zoom + translation to the second clip
 
-        let scale = AffineTransform.makeScale(2, 2)
-        let translation = AffineTransform.makeTranslation(-(2 - 1.0) * (960/2), -(2 - 1.0) * (1280/2))
-        let transform = AffineTransform.concat(scale, translation)
+    //     let scale = AffineTransform.makeScale(2, 2)
+    //     let translation = AffineTransform.makeTranslation(-(2 - 1.0) * (960/2), -(2 - 1.0) * (1280/2))
+    //     let transform = AffineTransform.concat(scale, translation)
         
-        instruction.setAffineTransform(transform, "video ")
-    }
+    //     instruction.setAffineTransform(transform, "video")
+    // }
+
+
 
         if (instruction.index == 5) {
         // Use AffineTransform to apply a zoom + translation to the second clip
@@ -142,7 +144,7 @@ function render(context, instruction) {
         let translation = AffineTransform.makeTranslation(-(1.2 - 1.0) * (960/2), -(1.2 - 1.0) * (1280/2))
         let transform = AffineTransform.concat(scale, translation)
         
-        instruction.setAffineTransform(transform, "video ")
+        instruction.setAffineTransform(transform, "video")
     }
 
     // // rotate it 90 degrees
@@ -171,9 +173,9 @@ function render(context, instruction) {
                     input will still be landscape, just sideways!*
                 */
 
-                // rotate it by 90 degrees
+                // rotate it by -90 degrees
 
-                let angle = 90
+                let angle = 270
                 
                 // math shit to turn 90 into something a computer understands
 
