@@ -65,7 +65,7 @@ function sequence(inputs) {
     secondClip.scaleToDuration(bar)
     track1.add(secondClip)
 
-    let thirdClip = new Clip(1.4, 1, cameraInput, "video")
+    let thirdClip = new Clip(1.5, 1, cameraInput, "video")
     thirdClip.scaleToDuration(bar*2)
     track1.add(thirdClip)
     
@@ -137,15 +137,15 @@ function render(context, instruction) {
 
 
 
-        if (instruction.index == 5) {
-        // Use AffineTransform to apply a zoom + translation to the second clip
+    //     if (instruction.index == 5) {
+    //     // Use AffineTransform to apply a zoom + translation to the second clip
 
-        let scale = AffineTransform.makeScale(1.3, 1.3)
-        let translation = AffineTransform.makeTranslation(-(1.2 - 1.0) * (960/2), -(1.2 - 1.0) * (1280/2))
-        let transform = AffineTransform.concat(scale, translation)
+    //     let scale = AffineTransform.makeScale(1.3, 1.3)
+    //     let translation = AffineTransform.makeTranslation(-(1.2 - 1.0) * (960/2), -(1.2 - 1.0) * (1280/2))
+    //     let transform = AffineTransform.concat(scale, translation)
         
-        instruction.setAffineTransform(transform, "video")
-    }
+    //     instruction.setAffineTransform(transform, "video")
+    // }
 
     // // rotate it 90 degrees
 
