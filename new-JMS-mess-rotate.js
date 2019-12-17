@@ -5,8 +5,6 @@
  *the video will punch in at beats 3 by 20% and beat 1 by 20%.
 */
 
-// HYPNO.composition.renderSize.width = 960
-// HYPNO.composition.renderSize.height = 1280
 
 
 // Rotate the thing, thanks Mena!
@@ -45,6 +43,10 @@ function auxRotationHandler(angle){
 // setup the sequence
 
 function sequence(inputs) {
+
+    HYPNO.composition.renderSize.width = 960
+    HYPNO.composition.renderSize.height = 1280
+
     
     let cameraInput = inputs["camera"] // camera input 5 second video
     let audioInput = inputs["mess-music.mp3"] // 14 second song
@@ -75,12 +77,12 @@ function sequence(inputs) {
     f4thClip.scaleToDuration(bar)
     track1.add(f4thClip)
 
-    let f5thClip = new Clip(3.3, .7, cameraInput, "video")
+    let f5thClip = new Clip(3.3, .6, cameraInput, "video")
     f5thClip.scaleToDuration(bar)
     track1.add(f5thClip)
     
 
-    let f6thClip = new Clip(4.2, 1, cameraInput, "video")
+    let f6thClip = new Clip(4, 1, cameraInput, "video")
     f6thClip.scaleToDuration(bar*2)
     track1.add(f6thClip)
 
@@ -157,7 +159,7 @@ function render(context, instruction) {
 
 // setting input size to camera setting
 
-        let inputSize = instruction.getImageSize("camera")
+        let inputSize = instruction.getImageSize("video")
 
 // if it doesn't match it , do something
 
@@ -173,9 +175,9 @@ function render(context, instruction) {
                     input will still be landscape, just sideways!*
                 */
 
-                // rotate it by -90 degrees
+                // rotate it by xx degrees
 
-                let angle = 270
+                let angle = 90
                 
                 // math shit to turn 90 into something a computer understands
 
@@ -186,7 +188,7 @@ function render(context, instruction) {
                 let t3 = AffineTransform.makeScale(result.scale, result.scale)
                 let x1 = AffineTransform.concat(t1, t2)
                 let x2 = AffineTransform.concat(x1, t3)
-                instruction.setAffineTransform(x2, "camera")
+                instruction.setAffineTransform(x2, "video")
 
                //  crop it
 
@@ -194,7 +196,7 @@ function render(context, instruction) {
                 let crop = new Filter("CICrop")
                 crop.setValue(instruction.getImage("camera"), "inputImage")
                 crop.setValue([0, 0, 960, 1280], "inputRectangle")
-                instruction.addFilter(crop, "camera")
+                instruction.addFilter(crop, "video")
 
             } else { // resize this if it doesnt fit
 
@@ -202,7 +204,7 @@ function render(context, instruction) {
                 
                 let scale = 1280/inputSize.height
                 let t1 = AffineTransform.makeScale(scale, scale)
-                instruction.setAffineTransform(t1, "camera")
+                instruction.setAffineTransform(t1, "video")
             }        
         }
     }
