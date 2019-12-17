@@ -1,2 +1,3 @@
 # JMSMess
-Hypno Photobooth
+
+Photobooth for JMS Holiday Mess 2019 using HYPNO Instant
